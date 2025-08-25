@@ -60,12 +60,9 @@ function App() {
 // COMPONENTS
 
 function Header() {
-  // const style = { color: 'red', fontSize: '48px', textTransform: 'uppercase' };
-  const style = {};
-
   return (
     <header className='header'>
-      <h1 style={style}>Fast React Pizza Co.</h1>;
+      <h1>Fast React Pizza Co.</h1>;
     </header>
   );
 }
@@ -73,7 +70,6 @@ function Header() {
 // MENU
 function Menu() {
   const pizzas = pizzaData;
-  // const pizzas = [];
   const numPizzas = pizzas.length;
 
   return (
@@ -82,7 +78,7 @@ function Menu() {
 
       {/* If pizzas array is not empty the ul will be render */}
 
-      {/* PIZZAs LIST */}
+      {/* PIZZA LIST */}
       {numPizzas > 0 ? (
         // FRAGMENT <> - does not create a new HTML element
         <>
@@ -99,39 +95,17 @@ function Menu() {
       ) : (
         <p>We're still working on our menu. Please come back later :)</p>
       )}
-
-      {/* {numPizzas > 0 && (
-      <ul className='pizzas'>
-        {pizzas.map(pizza => <Pizza pizzaObj={pizza} key={pizza.name}/>)}
-      </ul>
-    )} */}
-
-      {/* <Pizza
-        // props will be passed to the component
-        name='Pizza Spinaci'
-        ingredients='Tomato, mozarella, spinach, and ricotta cheese'
-        photoName='images/spinaci.jpg'
-        price={10}
-      />
-      <Pizza
-        name='Pizza funghi'
-        ingredients='Tomato, mushrooms'
-        photoName='images/funghi.jpg'
-        price={12}
-      /> */}
     </main>
   );
 }
 
 // Pizza component
 function Pizza({ pizzaObj }) {
-  // props recieved from the parent component used in the Menu component as an object. Child component cannot modify props data
-
-  // if (pizzaObj.soldOut) return null;
+  // props recieved from the parent component(MENU). Child component cannot modify props data
 
   return (
     <li className={`pizza ${pizzaObj.soldOut ? 'sold-out' : ''}`}>
-      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <img src={`${pizzaObj.photoName}`} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p> {pizzaObj.ingredients}</p>
@@ -146,14 +120,7 @@ function Footer() {
   const openHour = 12;
   const closeHour = 20;
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
 
-  // TWO RETURNS EXAMPLE
-
-  // if(!isOpen) return <p>Closed</p>
-
-  // if (hour >= openHour && hour <= closeHour) alert('We are currently open');
-  // else alert('Sorry we are closed!');
   return (
     <footer className='footer'>
       {isOpen ? (
